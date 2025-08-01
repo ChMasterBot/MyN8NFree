@@ -1,4 +1,7 @@
-FROM n8nio/n8n:latest
+FROM node:18-alpine
+
+# Instalar N8n globalmente
+RUN npm install -g n8n
 
 # Variables de entorno
 ENV NODE_ENV=production
@@ -10,10 +13,9 @@ ENV GENERIC_TIMEZONE=America/Bogota
 # Puerto para Render
 EXPOSE 10000
 
-# Crear directorio de datos
-USER root
-RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
-USER node
+# Crear directorio de trabajo
+WORKDIR /home/node
+RUN mkdir -p .n8n
 
 # Comando de inicio
 CMD ["n8n"]

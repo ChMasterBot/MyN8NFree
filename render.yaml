@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: mi-n8n-gratis
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 10000
+      - key: N8N_PROTOCOL
+        value: https
+      - key: GENERIC_TIMEZONE
+        value: America/Bogota
+      - key: N8N_EDITOR_BASE_URL
+        sync: false
